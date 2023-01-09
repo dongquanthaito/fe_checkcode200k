@@ -26,6 +26,7 @@ const Upload = () => {
                                             document.getElementsByClassName('btn')[0].innerHTML = `
                                             <div class="loader-upload"></div>`
                                             uploadCtrl(results.data)
+                                            document.getElementsByClassName('btn')[0].classList.add('disabled')
                                         })
                                     })
                                     console.log("Finished: ", results.data)

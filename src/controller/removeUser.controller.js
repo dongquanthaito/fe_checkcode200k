@@ -19,13 +19,19 @@ export const removeUserCtrl = (user) => {
       redirect: 'follow'
     };
     
-    fetch("http://14.225.205.2/account", requestOptions)
+    fetch("https://www.appjun.net/account", requestOptions)
       .then(response => response.json())
       .then(result => {
         if(result.deletedCount != 0) {
             swal("Thành công !", 'Xóa thành công tài khoản ' + '"' + username + '"', "success");
+            document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
+              window.location.reload()
+          })
         } else {
             swal("Oops!", "Không tìm thấy tài khoản "  + '"' + username + '"', "error");
+            document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
+              window.location.reload()
+          })
         }
         console.log(result)
       })

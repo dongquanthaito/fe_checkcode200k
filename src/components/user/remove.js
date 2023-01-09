@@ -1,5 +1,5 @@
 import React from "react";
-import '../../assets/style/register/remove.css';
+import '../../assets/style/user/remove.css';
 import waitForElm from "../../middlewares/waitForElm";
 import { removeUserCtrl } from "../../controller/removeUser.controller";
 
@@ -7,7 +7,7 @@ const RemoveUser = () => {
     return(
         <div id="register">
             <i class="fa-solid fa-house home-btn" title="Trang chủ"></i>
-            <div className="login-container">
+            <div className="remove-container">
                 <div className="screen">
                     <div className="screen__content">
                         <div className="login">
@@ -39,11 +39,15 @@ const RemoveUser = () => {
 export default RemoveUser;
 
 waitForElm('#register').then(() => {
+    if(localStorage.getItem('role') != 'superadmin'){
+        window.location.replace('/admin')
+    }
+    
     document.getElementsByClassName('register__submit')[0].addEventListener('click', () => {
         removeUserCtrl('user')
     })
 
     document.getElementsByClassName('home-btn')[0].addEventListener('click', () => {
-        window.location.replace('/')
+        window.location.replace('/admin')
     })
 })

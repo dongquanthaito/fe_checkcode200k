@@ -13,7 +13,7 @@ export const updateUsed = (code, user) => {
     var raw = JSON.stringify({
       "code_string": code_string,
       "user_used": user_used,
-      "status": true
+      "status": '1'
     });
     
     var requestOptions = {
@@ -23,7 +23,7 @@ export const updateUsed = (code, user) => {
       redirect: 'follow'
     };
     
-    fetch("http://14.225.205.2/code", requestOptions)
+    fetch("https://www.appjun.net/code", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));

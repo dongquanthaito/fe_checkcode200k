@@ -19,7 +19,7 @@ export const loginCtrl = (userId, pwId) => {
       redirect: 'follow'
     };
     
-    fetch("http://14.225.205.2/account/login", requestOptions)
+    fetch("https://www.appjun.net/account/login", requestOptions)
       .then(response => response.json())
       .then(result => {
         if(result.code == 404) {
@@ -35,8 +35,8 @@ export const loginCtrl = (userId, pwId) => {
           localStorage.setItem('token', result.token)
           console.log(result)
           setTimeout(() => {
-              window.location.replace('/')
-          }, 500);
+              window.location.replace('/admin')
+          }, 300);
         }
 
       })

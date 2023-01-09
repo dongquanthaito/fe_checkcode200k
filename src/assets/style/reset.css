@@ -17,12 +17,3 @@
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
-
-.disabled {
-    pointer-events: none !important;
-    cursor: not-allowed !important;
-    opacity: 0.65 !important;
-    filter: alpha(opacity=65) !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-}

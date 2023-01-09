@@ -1,21 +1,19 @@
 import { updateUsed } from "./updateUsed.controller";
 
-export const addPoint = (getUser, getPromo, getCode) => {
+export const addPoint = (getUser, getPromo, getCode, point) => {
 
     let code = document.getElementById(getCode).value
     let user = (document.getElementById(getUser).value).toString().replace(/\s/g, '')
     let promo = document.getElementById(getPromo).value
     let site = localStorage.getItem('site')
     let siteUpper = site.toUpperCase()
-    console.log(user, promo, code, site)
-
 
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
     var raw = JSON.stringify({
       "user": user,
-      "adjustment": 1,
+      "adjustment": point,
       "turnover": 1,
       "remark": promo,
       "ecremark": siteUpper + " chúc mừng quý khách đã nhận được khuyến mãi " + user + " - " + promo,
@@ -32,7 +30,7 @@ export const addPoint = (getUser, getPromo, getCode) => {
       redirect: 'follow'
     };
     
-    fetch("http://14.225.205.2/addpoint/" + site, requestOptions)
+    fetch("https://www.appjun.net/addpoint/" + site, requestOptions)
       .then(response => response.json())
       .then(result => {
         document.getElementsByClassName('loader')[0].style.zIndex='-1'
@@ -58,25 +56,21 @@ export const addPoint = (getUser, getPromo, getCode) => {
                 document.getElementById('non-status').innerHTML = "Quý khách đã nhận khuyến mãi này"
               })
             })
-        } else if(result.code == 200){
+        } else if(result.statusCode == 200){
             console.log("200")
             updateUsed(code, user)
             document.getElementsByClassName('result')[0].style.display="none"
             document.getElementById('non-status').style.display="flex"
             document.getElementById('non-status').style.backgroundColor='rgb(77, 255, 130)'
-            document.getElementById('non-status').innerHTML = "Cộng điểm thành công cho " + user
-
-            document.getElementById('code').classList.add('disabled')
-            document.getElementById('user').classList.add('disabled')
-            document.getElementById('promo').classList.add('disabled')
-
+            document.getElementById('non-status').innerHTML = "Cộng điểm thành công cho " + user + " " + point + " điểm"
+            
             document.getElementById('non-status').addEventListener('mouseover', () => {
               document.getElementById('non-status').innerHTML = "Tiếp tục"
               document.getElementById('non-status').addEventListener('click', () => {
                 window.location.reload()
               })
               document.getElementById('non-status').addEventListener('mouseout', () => {
-                document.getElementById('non-status').innerHTML = "Cộng điểm thành công cho " + user
+                document.getElementById('non-status').innerHTML = "Cộng điểm thành công cho " + user + " " + point + " điểm"
               })
             })
 
@@ -84,7 +78,7 @@ export const addPoint = (getUser, getPromo, getCode) => {
           console.log("499")
           document.getElementsByClassName('result')[0].style.display="none"
           document.getElementById('non-status').style.display="flex"
-          document.getElementById('non-status').innerHTML = "Có lỗi trong quá trình cộng điểm"
+          document.getElementById('non-status').innerHTML = "Không tìm thấy tài khoản người chơi"
 
 
           document.getElementById('code').classList.add('disabled')
@@ -97,7 +91,7 @@ export const addPoint = (getUser, getPromo, getCode) => {
               window.location.reload()
             })
             document.getElementById('non-status').addEventListener('mouseout', () => {
-              document.getElementById('non-status').innerHTML = "Có lỗi trong quá trình cộng điểm"
+              document.getElementById('non-status').innerHTML = "Không tìm thấy tài khoản người chơi"
             })
           })
         } else if(result.error) {

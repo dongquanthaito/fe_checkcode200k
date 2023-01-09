@@ -9,7 +9,7 @@ export const uploadCtrl = (result) => {
 
     var config = {
       method: 'post',
-      url: 'http://14.225.205.2/code',
+      url: 'https://www.appjun.net/code',
       headers: { 
         'Authorization': localStorage.getItem('token'), 
         'Content-Type': 'application/json'
@@ -19,6 +19,7 @@ export const uploadCtrl = (result) => {
     
     axios(config)
     .then(function (response) {
+      document.getElementsByClassName('btn')[0].innerHTML = 'Done'
         if(response.data) {
             console.log(response.data)
             swal("Thành công !", "Thêm thành công data", "success");

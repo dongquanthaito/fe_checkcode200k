@@ -1,25 +1,26 @@
 import React from "react";
-import '../../assets/style/register/register.css';
+import '../../assets/style/user/register.css';
 import waitForElm from "../../middlewares/waitForElm";
 import registerCtrl from "../../controller/register.controller";
+import { checkAuthRegis } from "../../controller/checkAuth.controller";
 
 const Register = () => {
     return(
         <div id="register">
             <i class="fa-solid fa-house home-btn" title="Trang chủ"></i>
-            <div className="login-container">
+            <div className="regis-container">
                 <div className="screen">
                     <div className="screen__content">
-                        <div className="login">
-                            <div className="login__field">
-                                <i className="login__icon fas fa-user"></i>
-                                <input type="text" className="login__input" id="regis-user" placeholder="Tên tài khoản" autoComplete="off"></input>
+                        <div className="regis">
+                            <div className="regis__field">
+                                <i className="regis__icon fas fa-user"></i>
+                                <input type="text" className="regis__input" id="regis-user" placeholder="Tên tài khoản" autoComplete="off"></input>
                             </div>
-                            <div className="login__field">
-                                <i className="login__icon fas fa-lock"></i>
-                                <input type="password" className="login__input" id="regis-pw" placeholder="Mật khẩu" autoComplete="off"></input>
+                            <div className="regis__field">
+                                <i className="regis__icon fas fa-lock"></i>
+                                <input type="password" className="regis__input" id="regis-pw" placeholder="Mật khẩu" autoComplete="off"></input>
                             </div>
-                            <div className="login__field regis-select">
+                            <div className="regis__field regis-select">
                                 <select  id="regis-role" >
                                     <option value='default'>-Chọn phân quyền-</option>
                                     <option value='superadmin'>Super Admin</option>
@@ -28,7 +29,7 @@ const Register = () => {
 
                                 </select>
                             </div>
-                            <div className="login__field regis-select">
+                            <div className="regis__field regis-select">
                                 <select  id="regis-site" >
                                     <option value='default'>-Chọn đài-</option>
                                     <option value='jun88'>Jun88</option>
@@ -41,7 +42,7 @@ const Register = () => {
                                 <i className="button__icon fas fa-chevron-right"></i>
                             </button>				
                         </div>
-                        <div className="social-login">
+                        <div className="social-regis">
                             <h3>Copyright © 2022  ATT</h3>
                         </div>
                     </div>
@@ -60,11 +61,17 @@ const Register = () => {
 export default Register;
 
 waitForElm('#register').then(() => {
+    if(localStorage.getItem('role') != 'superadmin'){
+        window.location.replace('/admin')
+    }
+
+    
+
     document.getElementsByClassName('register__submit')[0].addEventListener('click', () => {
         registerCtrl("regis-user", "regis-pw", "regis-role", "regis-site")
     })
 
     document.getElementsByClassName('home-btn')[0].addEventListener('click', () => {
-        window.location.replace('/')
+        window.location.replace('/admin')
     })
 })

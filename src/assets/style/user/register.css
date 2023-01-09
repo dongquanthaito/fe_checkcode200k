@@ -1,15 +1,31 @@
-#login {
+#register {
     width: 100%;
     height: 100vh;
     position: fixed;
 }
 
-.login-container {
+.home-btn {
+	position: absolute;
+	font-size: 1.7em;
+	top: 20px;
+	left: 30px;
+	color: #487e9d;
+	transition: 0.3s;
+}
+
+.home-btn:hover {
+	cursor: pointer;
+	color: #25536e;
+	transition: 0.3s;
+	scale: 1.1;
+}
+
+.regis-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
     height: 100%;
-	background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+	background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);	
 }
 
 .screen {		
@@ -78,24 +94,24 @@
 	border-radius: 60px;
 }
 
-.login {
+.regis {
 	width: 320px;
 	padding: 30px;
-	padding-top: 156px;
+	padding-top: 40px;
 }
 
-.login__field {
+.regis__field {
 	padding: 20px 0px;	
 	position: relative;	
 }
 
-.login__icon {
+.regis__icon {
 	position: absolute;
 	top: 30px;
 	color: #7593b5;
 }
 
-.login__input {
+.regis__input {
 	border: none;
 	border-bottom: 2px solid #D1D1D4;
 	background: none;
@@ -106,14 +122,25 @@
 	transition: .2s;
 }
 
-.login__input:active,
-.login__input:focus,
-.login__input:hover {
+.regis__input:active,
+.regis__input:focus,
+.regis__input:hover,
+.regis-select select:focus {
 	outline: none;
 	border-bottom-color: #677d9e;
 }
 
-.login__submit {
+.regis-select select{
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+    color: #292929;
+	padding: 10px;
+	font-weight: 700;
+	width: 75%;
+	transition: .2s;
+}
+
+.register__submit {
 	background: #fff;
 	font-size: 14px;
 	margin-top: 30px;
@@ -131,16 +158,11 @@
 	transition: .2s;
 }
 
-.login__submit:active,
-.login__submit:focus,
-.login__submit:hover {
+.register__submit:active,
+.register__submit:focus,
+.register__submit:hover {
 	border-color: #67859e;
 	outline: none;
-	background-color: #fafafa;
-}
-
-.login__submit:active {
-	background-color: whitesmoke;
 }
 
 .button__icon {
@@ -149,7 +171,7 @@
 	color: #7593b5;
 }
 
-.social-login {	
+.social-regis {	
 	position: absolute;
 	height: 120px;
 	width: 200px;
@@ -159,26 +181,18 @@
 	color: #fff;
 }
 
-.social-login > h3 {
+.social-regis > h3 {
     font-weight: 300 !important;
     font-size: 0.9em;
 }
 
-.social-login__icon {
+.social-regis__icon {
 	padding: 20px 10px;
 	color: #fff;
 	text-decoration: none;	
 	text-shadow: 0px 0px 8px #7598b5;
 }
 
-.social-login__icon:hover {
+.social-regis__icon:hover {
 	transform: scale(1.5);	
-}
-
-
-.toggle-pass:hover {
-	cursor: pointer;
-	color: #3e5877;
-	transition: 0.3s;
-
 }

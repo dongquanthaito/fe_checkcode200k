@@ -27,14 +27,14 @@ const registerCtrl = (user, pw, getRole, getSite) => {
       redirect: 'follow'
     };
     
-    fetch("http://14.225.205.2/account/register", requestOptions)
+    fetch("https://www.appjun.net/account/register", requestOptions)
       .then(response => response.json())
       .then(result => {
         if(result.name == "TokenExpiredError"){
             swal("Oops!", "Đã hết thời gian đăng nhập", "error");
             waitForElm('.swal-button-container').then(() => {
                 document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
-                    window.location.replace('/login')
+                    window.location.replace('/admin')
                 })
             })
         } else {

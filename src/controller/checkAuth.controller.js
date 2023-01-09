@@ -7,15 +7,17 @@ export const checkAuthLogin = () => {
     redirect: 'follow'
   };
   
-  fetch("http://14.225.205.2/auth", requestOptions)
+  fetch("https://www.appjun.net/auth", requestOptions)
     .then(response => response.json())
     .then(result => {
       console.log(result)
-      if(!result.username){
-          window.location.replace('/login')
+      if(result.username){
+        // window.location.replace('/admin')        
       }
-    })
-    .catch(error => console.log('error', error));
+    }).catch(error => {
+      window.location.replace('/')
+      console.log('error', error)
+    });
 }
 
 export const checkAuthRegis = () => {
@@ -27,13 +29,16 @@ export const checkAuthRegis = () => {
     redirect: 'follow'
   };
   
-  fetch("http://14.225.205.2/auth", requestOptions)
+  fetch("https://www.appjun.net/auth", requestOptions)
     .then(response => response.json())
     .then(result => {
       console.log(result)
-      if(!result.username){
-          window.location.replace('/register')
+      if(result.role != "superadmin"){
+        window.location.replace('/admin')
       }
     })
-    .catch(error => console.log('error', error)); 
+    .catch(error => {
+      window.location.replace('/admin')
+      console.log('error', error)
+    }); 
 }

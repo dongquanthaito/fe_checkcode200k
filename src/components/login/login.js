@@ -2,6 +2,7 @@ import React from "react";
 import '../../assets/style/login/login.css';
 import waitForElm from "../../middlewares/waitForElm";
 import { loginCtrl } from "../../controller/login.controller";
+import { checkAuthLogin } from "../../controller/checkAuth.controller";
 
 const Login = () => {
     return(
@@ -16,7 +17,8 @@ const Login = () => {
                             </div>
                             <div className="login__field">
                                 <i className="login__icon fas fa-lock"></i>
-                                <input type="password" className="login__input" id="pw-id" placeholder="Mật khẩu"></input>
+                                <input type="password" className="login__input" id="pw-id" placeholder="Mật khẩu" status_pw='hide'></input>
+                                <i class="fa-solid fa-eye update__icon toggle-pass"></i>
                             </div>
                             <button className="button login__submit">
                                 <span className="button__text">Đăng Nhập</span>
@@ -24,7 +26,7 @@ const Login = () => {
                             </button>				
                         </div>
                         <div className="social-login">
-                            <h3>Copyright © 2022  ATT</h3>
+                            <h3>Copyright © 2023  ATT</h3>
                         </div>
                     </div>
                     <div className="screen__background">
@@ -41,7 +43,12 @@ const Login = () => {
 
 export default Login;
 
+
 waitForElm('#login').then(() => {
+    if(localStorage.getItem('username')) {
+        window.location.replace('/admin')
+    }
+
     document.getElementsByClassName('login__submit')[0].addEventListener('click', () => {
 
         loginCtrl('user-id', 'pw-id')
@@ -51,6 +58,21 @@ waitForElm('#login').then(() => {
         if(e.keyCode == 13){
 
             document.getElementsByClassName('login__submit')[0].click()
+        }
+    })
+
+    document.getElementsByClassName('toggle-pass')[0].addEventListener('click', () => {
+        if(document.getElementById('pw-id').getAttribute('status_pw') == 'hide'){
+            console.log('aa')
+            document.getElementById('pw-id').type='text'
+            document.getElementsByClassName('toggle-pass')[0].classList.remove('fa-eye')
+            document.getElementsByClassName('toggle-pass')[0].classList.add('fa-eye-slash')
+            document.getElementById('pw-id').setAttribute('status_pw', 'show')
+        } else {
+            document.getElementById('pw-id').type='password'
+            document.getElementsByClassName('toggle-pass')[0].classList.add('fa-eye')
+            document.getElementsByClassName('toggle-pass')[0].classList.remove('ffa-eye-slash')
+            document.getElementById('pw-id').setAttribute('status_pw', 'hide')
         }
     })
 })
