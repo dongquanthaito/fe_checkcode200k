@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 const UpdateUser = () => {
     return(
         <div id="update">
-            <i class="fa-solid fa-house home-btn" title="Trang chủ"></i>
+            <i className="fa-solid fa-house home-btn" title="Trang chủ"></i>
             <div className="update-container">
                 <div className="screen">
                     <div className="screen__content">
@@ -24,7 +24,7 @@ const UpdateUser = () => {
                                 <div className="update__field">
                                     <i className="update__icon fas fa-lock"></i>
                                     <input type="password" className="update__input update-pass" placeholder="Mật khẩu mới" status_pw='hide' autoComplete="off"></input>
-                                    <i class="fa-solid fa-eye update__icon toggle-pass"></i>
+                                    <i className="fa-solid fa-eye update__icon toggle-pass"></i>
                                 </div>
                                 <button className="confirm-update">Xác Nhận</button>
                             </div>
@@ -45,7 +45,6 @@ const UpdateUser = () => {
                                         <option value='superadmin'>Super Admin</option>
                                         <option value='admin'>Admin</option>
                                         <option value='user'>User</option>
-
                                     </select>
                                 </div>
                                 <button className="confirm-update">Xác Nhận</button>

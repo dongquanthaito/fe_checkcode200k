@@ -2,7 +2,7 @@ import React from "react";
 import '../../assets/style/login/login.css';
 import waitForElm from "../../middlewares/waitForElm";
 import { loginCtrl } from "../../controller/login.controller";
-import { checkAuthLogin } from "../../controller/checkAuth.controller";
+import swal from 'sweetalert';
 
 const Login = () => {
     return(
@@ -18,7 +18,11 @@ const Login = () => {
                             <div className="login__field">
                                 <i className="login__icon fas fa-lock"></i>
                                 <input type="password" className="login__input" id="pw-id" placeholder="Mật khẩu" status_pw='hide'></input>
-                                <i class="fa-solid fa-eye update__icon toggle-pass"></i>
+                                <i className="fa-solid fa-eye update__icon toggle-pass"></i>
+                            </div>
+                            <div className="login__field">
+                                <i className="login__icon fas fa-key"></i>
+                                <input type="text" className="login__input" id="auth-code" placeholder="Mã xác thực"></input>
                             </div>
                             <button className="button login__submit">
                                 <span className="button__text">Đăng Nhập</span>
@@ -45,18 +49,18 @@ export default Login;
 
 
 waitForElm('#login').then(() => {
-    if(localStorage.getItem('username')) {
-        window.location.replace('/admin')
-    }
-
     document.getElementsByClassName('login__submit')[0].addEventListener('click', () => {
-
-        loginCtrl('user-id', 'pw-id')
+        if(document.getElementById('user-id').value == ""
+        ||document.getElementById('pw-id').value == ""
+        ||document.getElementById('auth-code').value == "") {
+            swal("Oops!", "Vui lòng nhập đầy đủ thông tin", "error");
+        } else {
+            loginCtrl('user-id', 'pw-id', "auth-code")
+        }
     })
 
     document.addEventListener('keydown', (e)=>{
         if(e.keyCode == 13){
-
             document.getElementsByClassName('login__submit')[0].click()
         }
     })
@@ -71,7 +75,7 @@ waitForElm('#login').then(() => {
         } else {
             document.getElementById('pw-id').type='password'
             document.getElementsByClassName('toggle-pass')[0].classList.add('fa-eye')
-            document.getElementsByClassName('toggle-pass')[0].classList.remove('ffa-eye-slash')
+            document.getElementsByClassName('toggle-pass')[0].classList.remove('fa-eye-slash')
             document.getElementById('pw-id').setAttribute('status_pw', 'hide')
         }
     })

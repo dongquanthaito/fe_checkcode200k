@@ -1,8 +1,6 @@
 import swal from 'sweetalert';
 
-export const removeUserCtrl = (user) => {
-
-    let username = document.getElementById(user).value
+export const removeUserCtrl = (username) => {
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", localStorage.getItem('token'));
@@ -23,14 +21,26 @@ export const removeUserCtrl = (user) => {
       .then(response => response.json())
       .then(result => {
         if(result.deletedCount != 0) {
-            swal("Thành công !", 'Xóa thành công tài khoản ' + '"' + username + '"', "success");
-            document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
-              window.location.reload()
+          document.getElementsByClassName('notice-remove')[0].style.display='none'
+          swal("Thành công !", 'Xóa thành công tài khoản ' + '"' + username + '"', "success");
+          if(localStorage.getItem('username') == username) {
+            document.getElementsByClassName('swal-button--confirm')[0].addEventListener('click', () => {
+                setTimeout(() => {
+                    window.location.replace('/')
+                    localStorage.clear()
+                }, 300);
+            })
+          }
+          document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
+            window.location.reload()
           })
+
+
         } else {
-            swal("Oops!", "Không tìm thấy tài khoản "  + '"' + username + '"', "error");
-            document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
-              window.location.reload()
+          document.getElementsByClassName('notice-remove')[0].style.display='none'
+          swal("Oops!", "Không tìm thấy tài khoản "  + '"' + username + '"', "error");
+          document.getElementsByClassName('swal-button')[0].addEventListener('click', () => {
+            window.location.reload()
           })
         }
         console.log(result)

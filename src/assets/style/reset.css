@@ -9,11 +9,16 @@
     text-decoration: none;
 }
 
-.disabled {
+/* .disabled {
     pointer-events: none !important;
     cursor: not-allowed !important;
     opacity: 0.75 !important;
     filter: alpha(opacity=75) !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
+} */
+
+.swal-text {
+    font-size: 1.2em !important;
+    text-align: center !important;
 }

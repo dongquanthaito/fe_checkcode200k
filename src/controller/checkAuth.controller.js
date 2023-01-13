@@ -11,8 +11,8 @@ export const checkAuthLogin = () => {
     .then(response => response.json())
     .then(result => {
       console.log(result)
-      if(result.username){
-        // window.location.replace('/admin')        
+      if(!result.username){
+        window.location.replace('/')        
       }
     }).catch(error => {
       window.location.replace('/')

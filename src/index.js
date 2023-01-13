@@ -6,7 +6,6 @@ import './assets/style/reset.css'
 import Login from './components/login/login';
 import Main from './components/main/Index';
 import Register from './components/user/register';
-import RemoveUser from './components/user/remove';
 import UpdateUser from './components/user/update';
 
 import Page404 from './helper/404Page';
@@ -21,9 +20,7 @@ root.render(
           <Route index element={<Login />} />
           <Route path='admin' element={<Main />} />
           <Route path='register' element={<Register />} />
-          <Route path='remove-user' element={<RemoveUser />} />
           <Route path='update-user' element={<UpdateUser />} />
-
           <Route path='*' element={<Page404 />} />
 
 

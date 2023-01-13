@@ -3,11 +3,12 @@ import '../../assets/style/user/register.css';
 import waitForElm from "../../middlewares/waitForElm";
 import registerCtrl from "../../controller/register.controller";
 import { checkAuthRegis } from "../../controller/checkAuth.controller";
+import swal from 'sweetalert';
 
 const Register = () => {
     return(
         <div id="register">
-            <i class="fa-solid fa-house home-btn" title="Trang chủ"></i>
+            <i className="fa-solid fa-house home-btn" title="Trang chủ"></i>
             <div className="regis-container">
                 <div className="screen">
                     <div className="screen__content">
@@ -68,7 +69,14 @@ waitForElm('#register').then(() => {
     
 
     document.getElementsByClassName('register__submit')[0].addEventListener('click', () => {
-        registerCtrl("regis-user", "regis-pw", "regis-role", "regis-site")
+        if(document.getElementById('regis-user').value == ""
+        || document.getElementById('regis-pw').value == ""
+        || document.getElementById('regis-role').value == 'default'
+        || document.getElementById('regis-site').value == 'default') {
+            swal("Oops!", "Vui lòng điền đầy đủ thông tin", "error");
+        } else {
+            registerCtrl("regis-user", "regis-pw", "regis-role", "regis-site")
+        }
     })
 
     document.getElementsByClassName('home-btn')[0].addEventListener('click', () => {

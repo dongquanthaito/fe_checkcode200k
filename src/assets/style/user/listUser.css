@@ -1,0 +1,312 @@
+#list-user {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #202124;
+}
+
+.list-user-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-list-user {
+    background: url('../../media/images/logo.png');
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-top: 80px;
+}
+
+.title-list-user {
+    font-weight: 400;
+    text-align: center;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e8eaed;
+    font-size: 1.3em;
+}
+
+.body-list-user {
+    width: 100%;
+}
+
+.user-item {
+    padding: 12px;
+    margin-top: 25px !important;
+    margin: 0 auto;
+    width: 50%;
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    border: #9AA0A6 solid 1px;
+    background-color: transparent;
+    border-radius: 20px;
+}
+
+.user-item:hover {
+    background-color: #303134;
+    border: none;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-item i {
+    font-size: 2em;
+    text-align: center;
+    margin-right: 20px;
+    color: white;
+}
+
+.user-name-list {
+    min-width: 200px;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #e8eaed;
+}
+
+.role-user-list {
+    min-width: 150px;
+    color: #e8eaed;
+}
+
+.site-user-list {
+    min-width: 80px;
+    color: #e8eaed;
+}
+
+.generate-qr-code {
+    margin-right: 32px;
+    min-width: 125px;
+    min-height: 25px;
+    background-color: rgb(4, 89, 158);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: 0.2s;
+
+}
+
+.generate-qr-code:hover {
+    background-color: rgb(1, 68, 122);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.update-user-list {
+    margin-right: 32px;
+    width: 200px;
+    height: 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(2, 145, 85);
+    color: white;
+    transition: 0.2s;
+}
+
+.update-user-list:hover,
+.confirm-update-btn:hover {
+    background-color: rgb(1, 102, 60);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.img-qr-code-cont {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100vh;
+}
+
+.img-rq-code-cont img {
+    width: 200px;
+    position: absolute;
+    z-index: 5;
+    top: 30vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.icon-remove-list {
+    width: 30px;
+    height: 20px;
+    font-size: 1.4em !important;
+    color: #e94b43 !important;
+    transition: 0.2s;
+}
+
+.icon-remove-list:hover {
+    color: #d4281f !important;
+    scale: 1.2;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.notice-remove {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100vh;
+}
+
+.notice-remove-status {
+    width: 450px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.notice-remove-status i {
+    font-size: 6em;
+    color: #e94b43;
+    margin: 20px 0;
+}
+
+.notice-remove-modal-tit {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: black;
+}
+
+.btn-modal-remove-list {
+    height: 70px;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-modal-remove-list button {
+    width: 47%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-modal-remove-list button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    transition: 0.2s;
+}
+
+.notice-remove-modal-confirm {
+    background-color: rgb(9, 69, 138);
+    color: white;
+}
+
+.sub-menu-list {
+    display: none;
+    border-top: none !important;
+    width: 45%;
+    min-height: 100px;
+    border: #9AA0A6 solid 1px;
+    background-color: transparent;
+    margin: 0 auto;
+    border-radius: 0 0 16px 16px;
+    position: relative;
+}
+
+.update-list-menu-cont {
+    display: flex;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.update-list-menu-cont > div {
+    width: 33.333%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.update-list-menu-cont h1 {
+    color: white;
+    margin-top: 12px;
+}
+
+.update-pass-cont, .update-role-cont, .update-site-cont {
+    width: 100%;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    border: solid 1px #727272;
+    border-radius: 12px;
+    padding: 0 12px;
+    margin: 12px 0;
+}
+
+.update-pass-cont i {
+    color: white;
+    transition: 0.3s;
+}
+
+.update-pass-cont input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 0 12px;
+    color: white;
+}
+
+.update-pass-cont input:focus,
+.update-role:focus,
+.update-site:focus {
+    outline: none;
+}
+
+.toggle-pass-update:hover {
+    color: #43bae9;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fa-eye-slash {
+    color: #43bae9 !important;
+}
+
+.update-role, .update-site {
+    background-color: #202124;
+    color: white;
+    width: 100%;
+    border: none;
+}
+
+.confirm-update-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+    width: 140px;
+    height: 26px;
+    background-color: rgb(2, 145, 85);
+    transition: 0.2s;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+}
